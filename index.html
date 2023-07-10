@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Drum Kit</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css?family=Arvo" rel="stylesheet">
+</head>
+
+<body>
+
+  <h1 id="title">Drum 🥁 Kit</h1>
+  <div class="set">
+    <button data-key="87" class="w drum">w</button>  
+    <button data-key="65" class="a drum">a</button>
+    <button data-key="83" class="s drum">s</button>
+    <button data-key="68" class="d drum">d</button>
+    <button data-key="74" class="j drum">j</button>
+    <button data-key="75" class="k drum">k</button>
+    <button data-key="76" class="l drum">l</button>
+  </div>
+
+  <audio data-key="87" src="sounds\crash.mp3"></audio>  
+  <audio data-key="65" src="sounds\kick-bass.mp3"></audio>
+  <audio data-key="83" src="sounds\snare.mp3"></audio>
+  <audio data-key="68" src="sounds\tom-1.mp3"></audio>
+  <audio data-key="74" src="sounds\tom-2.mp3"></audio>
+  <audio data-key="75" src="sounds\tom-3.mp3"></audio>
+  <audio data-key="76" src="sounds\tom-4.mp3"></audio>
+
+
+  <script >
+  
+    window.addEventListener('keydown',function(e){
+    const audio=document.querySelector(`audio[data-key="${e.keyCode}"]`);
+    const key=document.querySelector(`.drum[data-key="${e.keyCode}"]`);
+
+    if(!audio){
+        return;
+    }
+    audio.currentTime=0; //rewind to start
+    audio.play();
+
+    key.classList.add('pressed');
+
+   setTimeout(function(){
+    key.classList.remove('pressed')
+   },100);
+
+
+})
+</script>
+  
+  
+</body>
+<footer>
+  Made with ❤️ in India.
+</footer>
+
+
+</html>
